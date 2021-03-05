@@ -134,7 +134,7 @@ func (c *Client) SendMessage(msg *chatv1.SendMessageRequest) (*chatv1.SendMessag
 	return c.ChatKit.SendMessage(msg)
 }
 
-func (c *Client) transformHMCURL(hmc string) string {
+func (c *Client) TransformHMCURL(hmc string) string {
 	if !strings.HasPrefix(hmc, "hmc://") {
 		return fmt.Sprintf("https://%s/_harmony/media/download/%s", c.homeserver, hmc)
 	}
@@ -175,7 +175,7 @@ func (c *Client) AvatarFor(m *types.Message) string {
 		return ""
 	}
 
-	return c.transformHMCURL(resp.UserAvatar)
+	return c.TransformHMCURL(resp.UserAvatar)
 }
 
 func (c *Client) EventsStream() <-chan *types.Message {
