@@ -37,24 +37,29 @@ type Client struct {
 
 var ErrEndOfStream = errors.New("end of stream")
 
-func NewClient(homeserver, token string, userid uint64) (ret *Client, err error) {
-	ret = &Client{}
-	ret.events = make(chan *types.Message)
-
-	ret.mtx = new(sync.Mutex)
-
-	ret.homeserver = homeserver
-	ret.ChatKit = chatv1.NewChatServiceClient(homeserver)
-	ret.ChatKit.Header.Add("Authorization", token)
-	ret.AuthKit = authv1.NewAuthServiceClient(homeserver)
-	ret.AuthKit.Header.Add("Authorization", token)
-
-	ret.sessionToken = token
-	ret.UserID = userid
-
-	ret.ErrorHandler = func(e error) {
+func (c *Client) init(h string) {
+	c.events = make(chan *types.Message)
+	c.mtx = new(sync.Mutex)
+	c.ErrorHandler = func(e error) {
 		panic(e)
 	}
+	c.homeserver = h
+	c.ChatKit = chatv1.NewChatServiceClient(h)
+	c.AuthKit = authv1.NewAuthServiceClient(h)
+}
+
+func (c *Client) authed(token string, userID uint64) {
+	c.sessionToken = token
+	c.ChatKit.Header.Add("Authorization", token)
+	c.AuthKit.Header.Add("Authorization", token)
+	c.UserID = userID
+}
+
+func NewClient(homeserver, token string, userid uint64) (ret *Client, err error) {
+	ret = &Client{}
+	ret.homeserver = homeserver
+	ret.init(homeserver)
+	ret.authed(token, userid)
 
 	err = ret.StreamEvents()
 	if err != nil {
