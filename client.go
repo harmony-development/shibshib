@@ -56,7 +56,11 @@ func NewClient(homeserver, token string, userid uint64) (ret *Client, err error)
 		panic(e)
 	}
 
-	ret.StreamEvents()
+	err = ret.StreamEvents()
+	if err != nil {
+		ret = nil
+		return
+	}
 
 	return
 }
