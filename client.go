@@ -24,6 +24,7 @@ type Client struct {
 	outgoingEvents chan<- *chatv1.StreamEventsRequest
 
 	subscribedGuilds []uint64
+	onceHandlers     []func(*types.Message)
 
 	events       chan *types.Message
 	homeserver   string
@@ -83,6 +84,10 @@ func (c *Client) StreamEvents() (err error) {
 				continue
 			}
 
+			for _, h := range c.onceHandlers {
+				h(msg.SentMessage.Message)
+			}
+			c.onceHandlers = make([]func(*types.Message), 0)
 			c.events <- msg.SentMessage.Message
 		}
 
@@ -166,4 +171,8 @@ func (c *Client) AvatarFor(m *types.Message) string {
 
 func (c *Client) EventsStream() <-chan *types.Message {
 	return c.events
+}
+
+func (c *Client) HandleOnce(f func(*types.Message)) {
+	c.onceHandlers = append(c.onceHandlers, f)
 }
