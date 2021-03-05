@@ -24,6 +24,25 @@ type FederatedEvent struct {
 	Event  *types.Message
 }
 
+func NewFederatedClient(homeserver, token string, userID uint64) (*FederatedClient, error) {
+	self := &FederatedClient{}
+	self.homeserver = homeserver
+	self.Client.homeserver = homeserver
+	self.init(homeserver)
+	self.authed(token, userID)
+
+	self.subclients = make(map[string]*Client)
+	self.streams = make(map[<-chan *types.Message]*Client)
+	self.listening = make(map[*Client]<-chan *types.Message)
+
+	err := self.StreamEvents()
+	if err != nil {
+		return nil, fmt.Errorf("NewFederatedClient: own streamevents failed: %w", err)
+	}
+
+	return self, nil
+}
+
 func (f *FederatedClient) clientFor(homeserver string) (*Client, error) {
 	if f.homeserver == homeserver || strings.Split(homeserver, ":")[0] == "localhost" {
 		return &f.Client, nil
