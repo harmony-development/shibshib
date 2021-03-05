@@ -44,7 +44,7 @@ func NewFederatedClient(homeserver, token string, userID uint64) (*FederatedClie
 }
 
 func (f *FederatedClient) clientFor(homeserver string) (*Client, error) {
-	if f.homeserver == homeserver || strings.Split(homeserver, ":")[0] == "localhost" {
+	if f.homeserver == homeserver || strings.Split(homeserver, ":")[0] == "localhost" || homeserver == "" {
 		return &f.Client, nil
 	}
 
