@@ -72,14 +72,6 @@ func (f *FederatedClient) clientFor(homeserver string) (*Client, error) {
 
 	c.authed(data.SessionToken, data.UserId)
 	err = c.StreamEvents()
-	c.ErrorHandler = func(e error) {
-		if e == ErrEndOfStream {
-			err := c.StreamEvents()
-			if err != nil {
-				panic(fmt.Errorf("c.ErrorHandler: could not restart stream: %w", err))
-			}
-		}
-	}
 	if err != nil {
 		return nil, fmt.Errorf("ClientFor: failed to stream events for foreign server: %w", err)
 	}
@@ -110,6 +102,21 @@ func (f *FederatedClient) Start() (<-chan FederatedEvent, error) {
 				Dir:  reflect.SelectRecv,
 				Chan: reflect.ValueOf(stream),
 			})
+			client.ErrorHandler = func(e error) {
+				if e == ErrEndOfStream {
+					err := client.StreamEvents()
+					if err != nil {
+						panic(fmt.Errorf("client.ErrorHandler: could not restart stream: %w", err))
+					}
+					cp := client.subscribedGuilds
+					client.subscribedGuilds = make([]uint64, 0)
+					for _, gg := range cp {
+						client.SubscribeToGuild(gg)
+					}
+				} else {
+					panic(err)
+				}
+			}
 
 			f.listening[client] = stream
 			f.streams[stream] = client
