@@ -163,3 +163,7 @@ func (c *Client) AvatarFor(m *types.Message) string {
 
 	return c.transformHMCURL(resp.UserAvatar)
 }
+
+func (c *Client) EventsStream() <-chan *types.Message {
+	return c.events
+}
