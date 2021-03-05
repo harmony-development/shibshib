@@ -10,13 +10,11 @@ import (
 	authv1 "github.com/harmony-development/shibshib/gen/auth/v1"
 	chatv1 "github.com/harmony-development/shibshib/gen/chat/v1"
 	types "github.com/harmony-development/shibshib/gen/harmonytypes/v1"
-	profilev1 "github.com/harmony-development/shibshib/gen/profile/v1"
 )
 
 type Client struct {
 	ChatKit *chatv1.ChatServiceClient
 	AuthKit *authv1.AuthServiceClient
-	ProfKit *profilev1.ProfileServiceClient
 
 	ErrorHandler func(error)
 
