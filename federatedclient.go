@@ -15,8 +15,8 @@ type FederatedClient struct {
 
 	homeserver string
 	subclients map[string]*Client
-	streams    map[<-chan *chatv1.Message]*Client
-	listening  map[*Client]<-chan *chatv1.Message
+	streams    map[<-chan *LocatedMessage]*Client
+	listening  map[*Client]<-chan *LocatedMessage
 }
 
 type FederatedEvent struct {
@@ -41,8 +41,8 @@ func NewFederatedClient(homeserver, token string, userID uint64) (*FederatedClie
 	self.authed(token, userID)
 
 	self.subclients = make(map[string]*Client)
-	self.streams = make(map[<-chan *chatv1.Message]*Client)
-	self.listening = make(map[*Client]<-chan *chatv1.Message)
+	self.streams = make(map[<-chan *LocatedMessage]*Client)
+	self.listening = make(map[*Client]<-chan *LocatedMessage)
 
 	err = self.StreamEvents()
 	if err != nil {
@@ -155,7 +155,7 @@ func (f *FederatedClient) Start() (<-chan FederatedEvent, error) {
 
 			channel <- FederatedEvent{
 				Event:  val,
-				Client: f.streams[cases[i].Chan.Interface().(<-chan *chatv1.Message)],
+				Client: f.streams[cases[i].Chan.Interface().(<-chan *LocatedMessage)],
 			}
 		}
 	}()

@@ -27,9 +27,9 @@ type Client struct {
 	outgoingEvents chan<- *chatv1.StreamEventsRequest
 
 	subscribedGuilds []uint64
-	onceHandlers     []func(*chatv1.Message)
+	onceHandlers     []func(*LocatedMessage)
 
-	events       chan *chatv1.Message
+	events       chan *LocatedMessage
 	homeserver   string
 	sessionToken string
 
@@ -41,7 +41,7 @@ type Client struct {
 var ErrEndOfStream = errors.New("end of stream")
 
 func (c *Client) init(h string, wsp, wsph string) {
-	c.events = make(chan *chatv1.Message)
+	c.events = make(chan *LocatedMessage)
 	c.mtx = new(sync.Mutex)
 	c.ErrorHandler = func(e error) {
 		panic(e)
@@ -113,11 +113,20 @@ func (c *Client) StreamEvents() (err error) {
 				continue
 			}
 
-			for _, h := range c.onceHandlers {
-				h(msg.SentMessage.Message)
+			imsg := &LocatedMessage{
+				GuildID:   msg.SentMessage.GuildId,
+				ChannelID: msg.SentMessage.ChannelId,
+				MessageWithId: chatv1.MessageWithId{
+					MessageId: msg.SentMessage.MessageId,
+					Message:   msg.SentMessage.Message,
+				},
 			}
-			c.onceHandlers = make([]func(*chatv1.Message), 0)
-			c.events <- msg.SentMessage.Message
+
+			for _, h := range c.onceHandlers {
+				h(imsg)
+			}
+			c.onceHandlers = make([]func(*LocatedMessage), 0)
+			c.events <- imsg
 		}
 
 		c.mtx.Lock()
@@ -198,10 +207,10 @@ func (c *Client) AvatarFor(m *chatv1.Message) string {
 	return c.TransformHMCURL(resp.Profile.GetUserAvatar())
 }
 
-func (c *Client) EventsStream() <-chan *chatv1.Message {
+func (c *Client) EventsStream() <-chan *LocatedMessage {
 	return c.events
 }
 
-func (c *Client) HandleOnce(f func(*chatv1.Message)) {
+func (c *Client) HandleOnce(f func(*LocatedMessage)) {
 	c.onceHandlers = append(c.onceHandlers, f)
 }
