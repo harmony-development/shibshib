@@ -3,30 +3,33 @@ package shibshib
 import (
 	"errors"
 	"fmt"
+	"net/http"
+	"net/url"
 	"strconv"
 	"strings"
 	"sync"
 
 	authv1 "github.com/harmony-development/shibshib/gen/auth/v1"
 	chatv1 "github.com/harmony-development/shibshib/gen/chat/v1"
-	types "github.com/harmony-development/shibshib/gen/harmonytypes/v1"
+	profilev1 "github.com/harmony-development/shibshib/gen/profile/v1"
 )
 
 type Client struct {
-	ChatKit *chatv1.ChatServiceClient
-	AuthKit *authv1.AuthServiceClient
+	ChatKit    chatv1.HTTPChatServiceClient
+	AuthKit    authv1.HTTPAuthServiceClient
+	ProfileKit profilev1.HTTPProfileServiceClient
 
 	ErrorHandler func(error)
 
 	UserID uint64
 
-	incomingEvents <-chan *chatv1.Event
+	incomingEvents <-chan *chatv1.StreamEventsResponse
 	outgoingEvents chan<- *chatv1.StreamEventsRequest
 
 	subscribedGuilds []uint64
-	onceHandlers     []func(*types.Message)
+	onceHandlers     []func(*chatv1.Message)
 
-	events       chan *types.Message
+	events       chan *chatv1.Message
 	homeserver   string
 	sessionToken string
 
@@ -37,28 +40,38 @@ type Client struct {
 
 var ErrEndOfStream = errors.New("end of stream")
 
-func (c *Client) init(h string) {
-	c.events = make(chan *types.Message)
+func (c *Client) init(h string, wsp, wsph string) {
+	c.events = make(chan *chatv1.Message)
 	c.mtx = new(sync.Mutex)
 	c.ErrorHandler = func(e error) {
 		panic(e)
 	}
 	c.homeserver = h
-	c.ChatKit = chatv1.NewChatServiceClient(h)
-	c.AuthKit = authv1.NewAuthServiceClient(h)
+	c.ChatKit = chatv1.HTTPChatServiceClient{*http.DefaultClient, h, wsp, wsph, http.Header{}}
+	c.AuthKit = authv1.HTTPAuthServiceClient{*http.DefaultClient, h, wsp, wsph, http.Header{}}
+	c.ProfileKit = profilev1.HTTPProfileServiceClient{*http.DefaultClient, h, wsp, wsph, http.Header{}}
 }
 
 func (c *Client) authed(token string, userID uint64) {
 	c.sessionToken = token
 	c.ChatKit.Header.Add("Authorization", token)
 	c.AuthKit.Header.Add("Authorization", token)
+	c.ProfileKit.Header.Add("Authorization", token)
 	c.UserID = userID
 }
 
 func NewClient(homeserver, token string, userid uint64) (ret *Client, err error) {
+	url, err := url.Parse(homeserver)
+	if err != nil {
+		return nil, err
+	}
+	it := "wss"
+	if url.Scheme == "http" {
+		it = "ws"
+	}
 	ret = &Client{}
 	ret.homeserver = homeserver
-	ret.init(homeserver)
+	ret.init(homeserver, it, url.Host+":"+url.Port())
 	ret.authed(token, userid)
 
 	err = ret.StreamEvents()
@@ -78,7 +91,9 @@ func (c *Client) StreamEvents() (err error) {
 		return
 	}
 
-	c.outgoingEvents, c.incomingEvents, err = c.ChatKit.StreamEvents()
+	it := make(chan *chatv1.StreamEventsRequest)
+	c.outgoingEvents = it
+	c.incomingEvents, err = c.ChatKit.StreamEvents(it)
 	if err != nil {
 		err = fmt.Errorf("StreamEvents: failed to open stream: %w", err)
 		return
@@ -88,7 +103,12 @@ func (c *Client) StreamEvents() (err error) {
 
 	go func() {
 		for ev := range c.incomingEvents {
-			msg, ok := ev.Event.(*chatv1.Event_SentMessage)
+			chat, ok := ev.Event.(*chatv1.StreamEventsResponse_Chat)
+			if !ok {
+				continue
+			}
+
+			msg, ok := chat.Chat.Event.(*chatv1.StreamEvent_SentMessage)
 			if !ok {
 				continue
 			}
@@ -96,7 +116,7 @@ func (c *Client) StreamEvents() (err error) {
 			for _, h := range c.onceHandlers {
 				h(msg.SentMessage.Message)
 			}
-			c.onceHandlers = make([]func(*types.Message), 0)
+			c.onceHandlers = make([]func(*chatv1.Message), 0)
 			c.events <- msg.SentMessage.Message
 		}
 
@@ -148,40 +168,40 @@ func (c *Client) TransformHMCURL(hmc string) string {
 	return fmt.Sprintf("https://%s/_harmony/media/download/%s", split[0], split[1])
 }
 
-func (c *Client) UsernameFor(m *types.Message) string {
+func (c *Client) UsernameFor(m *chatv1.Message) string {
 	if m.Overrides != nil {
-		return m.Overrides.Name
+		return m.Overrides.GetUsername()
 	}
 
-	resp, err := c.ChatKit.GetUser(&chatv1.GetUserRequest{
+	resp, err := c.ProfileKit.GetProfile(&profilev1.GetProfileRequest{
 		UserId: m.AuthorId,
 	})
 	if err != nil {
 		return strconv.FormatUint(m.AuthorId, 10)
 	}
 
-	return resp.UserName
+	return resp.Profile.UserName
 }
 
-func (c *Client) AvatarFor(m *types.Message) string {
+func (c *Client) AvatarFor(m *chatv1.Message) string {
 	if m.Overrides != nil {
-		return m.Overrides.Avatar
+		return m.Overrides.GetAvatar()
 	}
 
-	resp, err := c.ChatKit.GetUser(&chatv1.GetUserRequest{
+	resp, err := c.ProfileKit.GetProfile(&profilev1.GetProfileRequest{
 		UserId: m.AuthorId,
 	})
 	if err != nil {
 		return ""
 	}
 
-	return c.TransformHMCURL(resp.UserAvatar)
+	return c.TransformHMCURL(resp.Profile.GetUserAvatar())
 }
 
-func (c *Client) EventsStream() <-chan *types.Message {
+func (c *Client) EventsStream() <-chan *chatv1.Message {
 	return c.events
 }
 
-func (c *Client) HandleOnce(f func(*types.Message)) {
+func (c *Client) HandleOnce(f func(*chatv1.Message)) {
 	c.onceHandlers = append(c.onceHandlers, f)
 }

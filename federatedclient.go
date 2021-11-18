@@ -2,12 +2,12 @@ package shibshib
 
 import (
 	"fmt"
+	"net/url"
 	"reflect"
 	"strings"
 
 	authv1 "github.com/harmony-development/shibshib/gen/auth/v1"
 	chatv1 "github.com/harmony-development/shibshib/gen/chat/v1"
-	types "github.com/harmony-development/shibshib/gen/harmonytypes/v1"
 )
 
 type FederatedClient struct {
@@ -15,27 +15,36 @@ type FederatedClient struct {
 
 	homeserver string
 	subclients map[string]*Client
-	streams    map[<-chan *types.Message]*Client
-	listening  map[*Client]<-chan *types.Message
+	streams    map[<-chan *chatv1.Message]*Client
+	listening  map[*Client]<-chan *chatv1.Message
 }
 
 type FederatedEvent struct {
 	Client *Client
-	Event  *types.Message
+	Event  *chatv1.Message
 }
 
 func NewFederatedClient(homeserver, token string, userID uint64) (*FederatedClient, error) {
+	url, err := url.Parse(homeserver)
+	if err != nil {
+		return nil, err
+	}
+	it := "wss"
+	if url.Scheme == "http" {
+		it = "ws"
+	}
+
 	self := &FederatedClient{}
 	self.homeserver = homeserver
 	self.Client.homeserver = homeserver
-	self.init(homeserver)
+	self.init(homeserver, it, url.Host+":"+url.Port())
 	self.authed(token, userID)
 
 	self.subclients = make(map[string]*Client)
-	self.streams = make(map[<-chan *types.Message]*Client)
-	self.listening = make(map[*Client]<-chan *types.Message)
+	self.streams = make(map[<-chan *chatv1.Message]*Client)
+	self.listening = make(map[*Client]<-chan *chatv1.Message)
 
-	err := self.StreamEvents()
+	err = self.StreamEvents()
 	if err != nil {
 		return nil, fmt.Errorf("NewFederatedClient: own streamevents failed: %w", err)
 	}
@@ -53,24 +62,33 @@ func (f *FederatedClient) clientFor(homeserver string) (*Client, error) {
 	}
 
 	session, err := f.AuthKit.Federate(&authv1.FederateRequest{
-		Target: homeserver,
+		ServerId: homeserver,
 	})
 	if err != nil {
 		return nil, fmt.Errorf("ClientFor: homeserver federation step failed: %w", err)
 	}
 
+	url, err := url.Parse(homeserver)
+	if err != nil {
+		return nil, err
+	}
+	scheme := "wss"
+	if url.Scheme == "http" {
+		scheme = "ws"
+	}
+
 	c := new(Client)
-	c.init(homeserver)
+	c.init(homeserver, scheme, url.Host)
 
 	data, err := c.AuthKit.LoginFederated(&authv1.LoginFederatedRequest{
 		AuthToken: session.Token,
-		Domain:    f.homeserver,
+		ServerId:  f.homeserver,
 	})
 	if err != nil {
 		return nil, fmt.Errorf("ClientFor: failed to log into foreignserver: %w", err)
 	}
 
-	c.authed(data.SessionToken, data.UserId)
+	c.authed(data.Session.SessionToken, data.Session.UserId)
 	err = c.StreamEvents()
 	if err != nil {
 		return nil, fmt.Errorf("ClientFor: failed to stream events for foreign server: %w", err)
@@ -90,9 +108,9 @@ func (f *FederatedClient) Start() (<-chan FederatedEvent, error) {
 	cases := []reflect.SelectCase{}
 
 	for _, g := range list.Guilds {
-		client, err := f.clientFor(g.Host)
+		client, err := f.clientFor(g.ServerId)
 		if err != nil {
-			return nil, fmt.Errorf("Start: failed to get client for guild %s/%d: %w", g.Host, g.GuildId, err)
+			return nil, fmt.Errorf("Start: failed to get client for guild %s/%d: %w", g.ServerId, g.GuildId, err)
 		}
 
 		stream, ok := f.listening[client]
@@ -133,11 +151,11 @@ func (f *FederatedClient) Start() (<-chan FederatedEvent, error) {
 				cases = append(cases[:i], cases[i+1:]...)
 			}
 
-			val := v.Interface().(*types.Message)
+			val := v.Interface().(*chatv1.Message)
 
 			channel <- FederatedEvent{
 				Event:  val,
-				Client: f.streams[cases[i].Chan.Interface().(<-chan *types.Message)],
+				Client: f.streams[cases[i].Chan.Interface().(<-chan *chatv1.Message)],
 			}
 		}
 	}()
