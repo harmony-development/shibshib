@@ -21,7 +21,7 @@ type FederatedClient struct {
 
 type FederatedEvent struct {
 	Client *Client
-	Event  *chatv1.Message
+	Event  *LocatedMessage
 }
 
 func NewFederatedClient(homeserver, token string, userID uint64) (*FederatedClient, error) {
@@ -151,7 +151,7 @@ func (f *FederatedClient) Start() (<-chan FederatedEvent, error) {
 				cases = append(cases[:i], cases[i+1:]...)
 			}
 
-			val := v.Interface().(*chatv1.Message)
+			val := v.Interface().(*LocatedMessage)
 
 			channel <- FederatedEvent{
 				Event:  val,
