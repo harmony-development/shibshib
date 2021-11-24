@@ -71,7 +71,7 @@ func NewClient(homeserver, token string, userid uint64) (ret *Client, err error)
 	}
 	ret = &Client{}
 	ret.homeserver = homeserver
-	ret.init(homeserver, it, url.Host+":"+url.Port())
+	ret.init(homeserver, it, url.Host)
 	ret.authed(token, userid)
 
 	err = ret.StreamEvents()

@@ -37,7 +37,7 @@ func NewFederatedClient(homeserver, token string, userID uint64) (*FederatedClie
 	self := &FederatedClient{}
 	self.homeserver = homeserver
 	self.Client.homeserver = homeserver
-	self.init(homeserver, it, url.Host+":"+url.Port())
+	self.init(homeserver, it, url.Host)
 	self.authed(token, userID)
 
 	self.subclients = make(map[string]*Client)
