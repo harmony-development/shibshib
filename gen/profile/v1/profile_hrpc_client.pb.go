@@ -37,7 +37,7 @@ func (client *HTTPProfileServiceClient) GetProfile(req *GetProfileRequest) (*Get
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.profile.v1.ProfileService.GetProfile/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.profile.v1.ProfileService/GetProfile", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -66,7 +66,7 @@ func (client *HTTPProfileServiceClient) UpdateProfile(req *UpdateProfileRequest)
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.profile.v1.ProfileService.UpdateProfile/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.profile.v1.ProfileService/UpdateProfile", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -95,7 +95,7 @@ func (client *HTTPProfileServiceClient) GetAppData(req *GetAppDataRequest) (*Get
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.profile.v1.ProfileService.GetAppData/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.profile.v1.ProfileService/GetAppData", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -124,7 +124,7 @@ func (client *HTTPProfileServiceClient) SetAppData(req *SetAppDataRequest) (*Set
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.profile.v1.ProfileService.SetAppData/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.profile.v1.ProfileService/SetAppData", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -160,7 +160,7 @@ func (client *HTTPTestProfileServiceClient) GetProfile(req *GetProfileRequest) (
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.profile.v1.ProfileService.GetProfile/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.profile.v1.ProfileService/GetProfile", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -182,7 +182,7 @@ func (client *HTTPTestProfileServiceClient) UpdateProfile(req *UpdateProfileRequ
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.profile.v1.ProfileService.UpdateProfile/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.profile.v1.ProfileService/UpdateProfile", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -204,7 +204,7 @@ func (client *HTTPTestProfileServiceClient) GetAppData(req *GetAppDataRequest) (
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.profile.v1.ProfileService.GetAppData/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.profile.v1.ProfileService/GetAppData", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -226,7 +226,7 @@ func (client *HTTPTestProfileServiceClient) SetAppData(req *SetAppDataRequest) (
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.profile.v1.ProfileService.SetAppData/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.profile.v1.ProfileService/SetAppData", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err

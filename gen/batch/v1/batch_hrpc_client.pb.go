@@ -37,7 +37,7 @@ func (client *HTTPBatchServiceClient) Batch(req *BatchRequest) (*BatchResponse, 
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.batch.v1.BatchService.Batch/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.batch.v1.BatchService/Batch", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -66,7 +66,7 @@ func (client *HTTPBatchServiceClient) BatchSame(req *BatchSameRequest) (*BatchSa
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.batch.v1.BatchService.BatchSame/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.batch.v1.BatchService/BatchSame", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -102,7 +102,7 @@ func (client *HTTPTestBatchServiceClient) Batch(req *BatchRequest) (*BatchRespon
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.batch.v1.BatchService.Batch/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.batch.v1.BatchService/Batch", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -124,7 +124,7 @@ func (client *HTTPTestBatchServiceClient) BatchSame(req *BatchSameRequest) (*Bat
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.batch.v1.BatchService.BatchSame/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.batch.v1.BatchService/BatchSame", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err

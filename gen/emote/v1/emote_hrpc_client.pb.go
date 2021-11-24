@@ -44,7 +44,7 @@ func (client *HTTPEmoteServiceClient) CreateEmotePack(req *CreateEmotePackReques
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.emote.v1.EmoteService.CreateEmotePack/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.emote.v1.EmoteService/CreateEmotePack", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -73,7 +73,7 @@ func (client *HTTPEmoteServiceClient) GetEmotePacks(req *GetEmotePacksRequest) (
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.emote.v1.EmoteService.GetEmotePacks/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.emote.v1.EmoteService/GetEmotePacks", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -102,7 +102,7 @@ func (client *HTTPEmoteServiceClient) GetEmotePackEmotes(req *GetEmotePackEmotes
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.emote.v1.EmoteService.GetEmotePackEmotes/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.emote.v1.EmoteService/GetEmotePackEmotes", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -131,7 +131,7 @@ func (client *HTTPEmoteServiceClient) AddEmoteToPack(req *AddEmoteToPackRequest)
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.emote.v1.EmoteService.AddEmoteToPack/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.emote.v1.EmoteService/AddEmoteToPack", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -160,7 +160,7 @@ func (client *HTTPEmoteServiceClient) DeleteEmotePack(req *DeleteEmotePackReques
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.emote.v1.EmoteService.DeleteEmotePack/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.emote.v1.EmoteService/DeleteEmotePack", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -189,7 +189,7 @@ func (client *HTTPEmoteServiceClient) DeleteEmoteFromPack(req *DeleteEmoteFromPa
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.emote.v1.EmoteService.DeleteEmoteFromPack/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.emote.v1.EmoteService/DeleteEmoteFromPack", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -218,7 +218,7 @@ func (client *HTTPEmoteServiceClient) DequipEmotePack(req *DequipEmotePackReques
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.emote.v1.EmoteService.DequipEmotePack/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.emote.v1.EmoteService/DequipEmotePack", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -247,7 +247,7 @@ func (client *HTTPEmoteServiceClient) EquipEmotePack(req *EquipEmotePackRequest)
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.emote.v1.EmoteService.EquipEmotePack/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.emote.v1.EmoteService/EquipEmotePack", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -283,7 +283,7 @@ func (client *HTTPTestEmoteServiceClient) CreateEmotePack(req *CreateEmotePackRe
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.emote.v1.EmoteService.CreateEmotePack/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.emote.v1.EmoteService/CreateEmotePack", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -305,7 +305,7 @@ func (client *HTTPTestEmoteServiceClient) GetEmotePacks(req *GetEmotePacksReques
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.emote.v1.EmoteService.GetEmotePacks/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.emote.v1.EmoteService/GetEmotePacks", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -327,7 +327,7 @@ func (client *HTTPTestEmoteServiceClient) GetEmotePackEmotes(req *GetEmotePackEm
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.emote.v1.EmoteService.GetEmotePackEmotes/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.emote.v1.EmoteService/GetEmotePackEmotes", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -349,7 +349,7 @@ func (client *HTTPTestEmoteServiceClient) AddEmoteToPack(req *AddEmoteToPackRequ
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.emote.v1.EmoteService.AddEmoteToPack/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.emote.v1.EmoteService/AddEmoteToPack", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -371,7 +371,7 @@ func (client *HTTPTestEmoteServiceClient) DeleteEmotePack(req *DeleteEmotePackRe
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.emote.v1.EmoteService.DeleteEmotePack/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.emote.v1.EmoteService/DeleteEmotePack", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -393,7 +393,7 @@ func (client *HTTPTestEmoteServiceClient) DeleteEmoteFromPack(req *DeleteEmoteFr
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.emote.v1.EmoteService.DeleteEmoteFromPack/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.emote.v1.EmoteService/DeleteEmoteFromPack", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -415,7 +415,7 @@ func (client *HTTPTestEmoteServiceClient) DequipEmotePack(req *DequipEmotePackRe
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.emote.v1.EmoteService.DequipEmotePack/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.emote.v1.EmoteService/DequipEmotePack", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -437,7 +437,7 @@ func (client *HTTPTestEmoteServiceClient) EquipEmotePack(req *EquipEmotePackRequ
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.emote.v1.EmoteService.EquipEmotePack/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.emote.v1.EmoteService/EquipEmotePack", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err

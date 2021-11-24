@@ -50,7 +50,7 @@ func (client *HTTPAuthServiceClient) Federate(req *FederateRequest) (*FederateRe
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.auth.v1.AuthService.Federate/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.auth.v1.AuthService/Federate", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -79,7 +79,7 @@ func (client *HTTPAuthServiceClient) LoginFederated(req *LoginFederatedRequest) 
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.auth.v1.AuthService.LoginFederated/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.auth.v1.AuthService/LoginFederated", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -108,7 +108,7 @@ func (client *HTTPAuthServiceClient) Key(req *KeyRequest) (*KeyResponse, error) 
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.auth.v1.AuthService.Key/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.auth.v1.AuthService/Key", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -137,7 +137,7 @@ func (client *HTTPAuthServiceClient) BeginAuth(req *BeginAuthRequest) (*BeginAut
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.auth.v1.AuthService.BeginAuth/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.auth.v1.AuthService/BeginAuth", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -166,7 +166,7 @@ func (client *HTTPAuthServiceClient) NextStep(req *NextStepRequest) (*NextStepRe
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.auth.v1.AuthService.NextStep/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.auth.v1.AuthService/NextStep", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -195,7 +195,7 @@ func (client *HTTPAuthServiceClient) StepBack(req *StepBackRequest) (*StepBackRe
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.auth.v1.AuthService.StepBack/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.auth.v1.AuthService/StepBack", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -227,7 +227,7 @@ func (client *HTTPAuthServiceClient) CheckLoggedIn(req *CheckLoggedInRequest) (*
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.auth.v1.AuthService.CheckLoggedIn/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.auth.v1.AuthService/CheckLoggedIn", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -263,7 +263,7 @@ func (client *HTTPTestAuthServiceClient) Federate(req *FederateRequest) (*Federa
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.auth.v1.AuthService.Federate/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.auth.v1.AuthService/Federate", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -285,7 +285,7 @@ func (client *HTTPTestAuthServiceClient) LoginFederated(req *LoginFederatedReque
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.auth.v1.AuthService.LoginFederated/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.auth.v1.AuthService/LoginFederated", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -307,7 +307,7 @@ func (client *HTTPTestAuthServiceClient) Key(req *KeyRequest) (*KeyResponse, err
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.auth.v1.AuthService.Key/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.auth.v1.AuthService/Key", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -329,7 +329,7 @@ func (client *HTTPTestAuthServiceClient) BeginAuth(req *BeginAuthRequest) (*Begi
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.auth.v1.AuthService.BeginAuth/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.auth.v1.AuthService/BeginAuth", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -351,7 +351,7 @@ func (client *HTTPTestAuthServiceClient) NextStep(req *NextStepRequest) (*NextSt
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.auth.v1.AuthService.NextStep/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.auth.v1.AuthService/NextStep", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -373,7 +373,7 @@ func (client *HTTPTestAuthServiceClient) StepBack(req *StepBackRequest) (*StepBa
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.auth.v1.AuthService.StepBack/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.auth.v1.AuthService/StepBack", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -398,7 +398,7 @@ func (client *HTTPTestAuthServiceClient) CheckLoggedIn(req *CheckLoggedInRequest
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.auth.v1.AuthService.CheckLoggedIn/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.auth.v1.AuthService/CheckLoggedIn", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err

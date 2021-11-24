@@ -29,7 +29,7 @@ type HTTPVoiceServiceClient struct {
 }
 
 func (client *HTTPVoiceServiceClient) StreamMessage(req chan *StreamMessageRequest) (chan *StreamMessageResponse, error) {
-	u := url.URL{Scheme: client.WebsocketProto, Host: client.WebsocketHost, Path: "/protocol.voice.v1.VoiceService.StreamMessage/"}
+	u := url.URL{Scheme: client.WebsocketProto, Host: client.WebsocketHost, Path: "/protocol.voice.v1.VoiceService/StreamMessage"}
 	inC := req
 	outC := make(chan *StreamMessageResponse)
 	c, _, err := websocket.DefaultDialer.Dial(u.String(), client.Header)

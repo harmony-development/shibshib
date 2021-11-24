@@ -34,7 +34,7 @@ func (client *HTTPMediaProxyServiceClient) FetchLinkMetadata(req *FetchLinkMetad
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.mediaproxy.v1.MediaProxyService.FetchLinkMetadata/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.mediaproxy.v1.MediaProxyService/FetchLinkMetadata", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -63,7 +63,7 @@ func (client *HTTPMediaProxyServiceClient) InstantView(req *InstantViewRequest) 
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.mediaproxy.v1.MediaProxyService.InstantView/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.mediaproxy.v1.MediaProxyService/InstantView", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -92,7 +92,7 @@ func (client *HTTPMediaProxyServiceClient) CanInstantView(req *CanInstantViewReq
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.mediaproxy.v1.MediaProxyService.CanInstantView/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.mediaproxy.v1.MediaProxyService/CanInstantView", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -128,7 +128,7 @@ func (client *HTTPTestMediaProxyServiceClient) FetchLinkMetadata(req *FetchLinkM
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.mediaproxy.v1.MediaProxyService.FetchLinkMetadata/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.mediaproxy.v1.MediaProxyService/FetchLinkMetadata", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -150,7 +150,7 @@ func (client *HTTPTestMediaProxyServiceClient) InstantView(req *InstantViewReque
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.mediaproxy.v1.MediaProxyService.InstantView/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.mediaproxy.v1.MediaProxyService/InstantView", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -172,7 +172,7 @@ func (client *HTTPTestMediaProxyServiceClient) CanInstantView(req *CanInstantVie
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.mediaproxy.v1.MediaProxyService.CanInstantView/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.mediaproxy.v1.MediaProxyService/CanInstantView", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err

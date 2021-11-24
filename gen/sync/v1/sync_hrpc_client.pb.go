@@ -35,7 +35,7 @@ func (client *HTTPPostboxServiceClient) Pull(req *PullRequest) (*PullResponse, e
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.sync.v1.PostboxService.Pull/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.sync.v1.PostboxService/Pull", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -64,7 +64,7 @@ func (client *HTTPPostboxServiceClient) Push(req *PushRequest) (*PushResponse, e
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.sync.v1.PostboxService.Push/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.sync.v1.PostboxService/Push", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -93,7 +93,7 @@ func (client *HTTPPostboxServiceClient) NotifyNewId(req *NotifyNewIdRequest) (*N
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.sync.v1.PostboxService.NotifyNewId/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.sync.v1.PostboxService/NotifyNewId", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -129,7 +129,7 @@ func (client *HTTPTestPostboxServiceClient) Pull(req *PullRequest) (*PullRespons
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.sync.v1.PostboxService.Pull/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.sync.v1.PostboxService/Pull", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -151,7 +151,7 @@ func (client *HTTPTestPostboxServiceClient) Push(req *PushRequest) (*PushRespons
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.sync.v1.PostboxService.Push/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.sync.v1.PostboxService/Push", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -173,7 +173,7 @@ func (client *HTTPTestPostboxServiceClient) NotifyNewId(req *NotifyNewIdRequest)
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.sync.v1.PostboxService.NotifyNewId/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.sync.v1.PostboxService/NotifyNewId", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err

@@ -182,7 +182,7 @@ func (client *HTTPChatServiceClient) CreateGuild(req *CreateGuildRequest) (*Crea
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.CreateGuild/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/CreateGuild", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -211,7 +211,7 @@ func (client *HTTPChatServiceClient) CreateRoom(req *CreateRoomRequest) (*Create
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.CreateRoom/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/CreateRoom", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -240,7 +240,7 @@ func (client *HTTPChatServiceClient) CreateDirectMessage(req *CreateDirectMessag
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.CreateDirectMessage/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/CreateDirectMessage", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -269,7 +269,7 @@ func (client *HTTPChatServiceClient) UpgradeRoomToGuild(req *UpgradeRoomToGuildR
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.UpgradeRoomToGuild/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/UpgradeRoomToGuild", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -298,7 +298,7 @@ func (client *HTTPChatServiceClient) CreateInvite(req *CreateInviteRequest) (*Cr
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.CreateInvite/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/CreateInvite", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -327,7 +327,7 @@ func (client *HTTPChatServiceClient) CreateChannel(req *CreateChannelRequest) (*
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.CreateChannel/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/CreateChannel", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -356,7 +356,7 @@ func (client *HTTPChatServiceClient) GetGuildList(req *GetGuildListRequest) (*Ge
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.GetGuildList/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/GetGuildList", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -385,7 +385,7 @@ func (client *HTTPChatServiceClient) InviteUserToGuild(req *InviteUserToGuildReq
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.InviteUserToGuild/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/InviteUserToGuild", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -414,7 +414,7 @@ func (client *HTTPChatServiceClient) GetPendingInvites(req *GetPendingInvitesReq
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.GetPendingInvites/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/GetPendingInvites", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -443,7 +443,7 @@ func (client *HTTPChatServiceClient) RejectPendingInvite(req *RejectPendingInvit
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.RejectPendingInvite/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/RejectPendingInvite", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -472,7 +472,7 @@ func (client *HTTPChatServiceClient) IgnorePendingInvite(req *IgnorePendingInvit
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.IgnorePendingInvite/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/IgnorePendingInvite", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -501,7 +501,7 @@ func (client *HTTPChatServiceClient) GetGuild(req *GetGuildRequest) (*GetGuildRe
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.GetGuild/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/GetGuild", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -530,7 +530,7 @@ func (client *HTTPChatServiceClient) GetGuildInvites(req *GetGuildInvitesRequest
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.GetGuildInvites/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/GetGuildInvites", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -559,7 +559,7 @@ func (client *HTTPChatServiceClient) GetGuildMembers(req *GetGuildMembersRequest
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.GetGuildMembers/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/GetGuildMembers", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -588,7 +588,7 @@ func (client *HTTPChatServiceClient) GetGuildChannels(req *GetGuildChannelsReque
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.GetGuildChannels/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/GetGuildChannels", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -617,7 +617,7 @@ func (client *HTTPChatServiceClient) GetChannelMessages(req *GetChannelMessagesR
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.GetChannelMessages/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/GetChannelMessages", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -646,7 +646,7 @@ func (client *HTTPChatServiceClient) GetMessage(req *GetMessageRequest) (*GetMes
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.GetMessage/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/GetMessage", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -675,7 +675,7 @@ func (client *HTTPChatServiceClient) UpdateGuildInformation(req *UpdateGuildInfo
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.UpdateGuildInformation/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/UpdateGuildInformation", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -704,7 +704,7 @@ func (client *HTTPChatServiceClient) UpdateChannelInformation(req *UpdateChannel
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.UpdateChannelInformation/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/UpdateChannelInformation", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -733,7 +733,7 @@ func (client *HTTPChatServiceClient) UpdateChannelOrder(req *UpdateChannelOrderR
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.UpdateChannelOrder/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/UpdateChannelOrder", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -762,7 +762,7 @@ func (client *HTTPChatServiceClient) UpdateAllChannelOrder(req *UpdateAllChannel
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.UpdateAllChannelOrder/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/UpdateAllChannelOrder", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -791,7 +791,7 @@ func (client *HTTPChatServiceClient) UpdateMessageText(req *UpdateMessageTextReq
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.UpdateMessageText/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/UpdateMessageText", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -820,7 +820,7 @@ func (client *HTTPChatServiceClient) DeleteGuild(req *DeleteGuildRequest) (*Dele
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.DeleteGuild/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/DeleteGuild", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -849,7 +849,7 @@ func (client *HTTPChatServiceClient) DeleteInvite(req *DeleteInviteRequest) (*De
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.DeleteInvite/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/DeleteInvite", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -878,7 +878,7 @@ func (client *HTTPChatServiceClient) DeleteChannel(req *DeleteChannelRequest) (*
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.DeleteChannel/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/DeleteChannel", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -907,7 +907,7 @@ func (client *HTTPChatServiceClient) DeleteMessage(req *DeleteMessageRequest) (*
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.DeleteMessage/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/DeleteMessage", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -936,7 +936,7 @@ func (client *HTTPChatServiceClient) JoinGuild(req *JoinGuildRequest) (*JoinGuil
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.JoinGuild/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/JoinGuild", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -965,7 +965,7 @@ func (client *HTTPChatServiceClient) LeaveGuild(req *LeaveGuildRequest) (*LeaveG
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.LeaveGuild/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/LeaveGuild", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -994,7 +994,7 @@ func (client *HTTPChatServiceClient) TriggerAction(req *TriggerActionRequest) (*
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.TriggerAction/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/TriggerAction", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -1023,7 +1023,7 @@ func (client *HTTPChatServiceClient) SendMessage(req *SendMessageRequest) (*Send
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.SendMessage/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/SendMessage", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -1052,7 +1052,7 @@ func (client *HTTPChatServiceClient) QueryHasPermission(req *QueryHasPermissionR
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.QueryHasPermission/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/QueryHasPermission", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -1081,7 +1081,7 @@ func (client *HTTPChatServiceClient) SetPermissions(req *SetPermissionsRequest) 
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.SetPermissions/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/SetPermissions", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -1110,7 +1110,7 @@ func (client *HTTPChatServiceClient) GetPermissions(req *GetPermissionsRequest) 
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.GetPermissions/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/GetPermissions", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -1139,7 +1139,7 @@ func (client *HTTPChatServiceClient) MoveRole(req *MoveRoleRequest) (*MoveRoleRe
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.MoveRole/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/MoveRole", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -1168,7 +1168,7 @@ func (client *HTTPChatServiceClient) GetGuildRoles(req *GetGuildRolesRequest) (*
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.GetGuildRoles/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/GetGuildRoles", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -1197,7 +1197,7 @@ func (client *HTTPChatServiceClient) AddGuildRole(req *AddGuildRoleRequest) (*Ad
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.AddGuildRole/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/AddGuildRole", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -1226,7 +1226,7 @@ func (client *HTTPChatServiceClient) ModifyGuildRole(req *ModifyGuildRoleRequest
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.ModifyGuildRole/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/ModifyGuildRole", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -1255,7 +1255,7 @@ func (client *HTTPChatServiceClient) DeleteGuildRole(req *DeleteGuildRoleRequest
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.DeleteGuildRole/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/DeleteGuildRole", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -1284,7 +1284,7 @@ func (client *HTTPChatServiceClient) ManageUserRoles(req *ManageUserRolesRequest
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.ManageUserRoles/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/ManageUserRoles", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -1313,7 +1313,7 @@ func (client *HTTPChatServiceClient) GetUserRoles(req *GetUserRolesRequest) (*Ge
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.GetUserRoles/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/GetUserRoles", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -1342,7 +1342,7 @@ func (client *HTTPChatServiceClient) Typing(req *TypingRequest) (*TypingResponse
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.Typing/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/Typing", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -1371,7 +1371,7 @@ func (client *HTTPChatServiceClient) PreviewGuild(req *PreviewGuildRequest) (*Pr
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.PreviewGuild/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/PreviewGuild", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -1400,7 +1400,7 @@ func (client *HTTPChatServiceClient) GetBannedUsers(req *GetBannedUsersRequest) 
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.GetBannedUsers/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/GetBannedUsers", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -1429,7 +1429,7 @@ func (client *HTTPChatServiceClient) BanUser(req *BanUserRequest) (*BanUserRespo
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.BanUser/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/BanUser", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -1458,7 +1458,7 @@ func (client *HTTPChatServiceClient) KickUser(req *KickUserRequest) (*KickUserRe
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.KickUser/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/KickUser", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -1487,7 +1487,7 @@ func (client *HTTPChatServiceClient) UnbanUser(req *UnbanUserRequest) (*UnbanUse
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.UnbanUser/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/UnbanUser", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -1516,7 +1516,7 @@ func (client *HTTPChatServiceClient) GetPinnedMessages(req *GetPinnedMessagesReq
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.GetPinnedMessages/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/GetPinnedMessages", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -1545,7 +1545,7 @@ func (client *HTTPChatServiceClient) PinMessage(req *PinMessageRequest) (*PinMes
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.PinMessage/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/PinMessage", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -1574,7 +1574,7 @@ func (client *HTTPChatServiceClient) UnpinMessage(req *UnpinMessageRequest) (*Un
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.UnpinMessage/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/UnpinMessage", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -1598,7 +1598,7 @@ func (client *HTTPChatServiceClient) UnpinMessage(req *UnpinMessageRequest) (*Un
 	return ret, nil
 }
 func (client *HTTPChatServiceClient) StreamEvents(req chan *StreamEventsRequest) (chan *StreamEventsResponse, error) {
-	u := url.URL{Scheme: client.WebsocketProto, Host: client.WebsocketHost, Path: "/protocol.chat.v1.ChatService.StreamEvents/"}
+	u := url.URL{Scheme: client.WebsocketProto, Host: client.WebsocketHost, Path: "/protocol.chat.v1.ChatService/StreamEvents"}
 	inC := req
 	outC := make(chan *StreamEventsResponse)
 	c, _, err := websocket.DefaultDialer.Dial(u.String(), client.Header)
@@ -1658,7 +1658,7 @@ func (client *HTTPChatServiceClient) AddReaction(req *AddReactionRequest) (*AddR
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.AddReaction/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/AddReaction", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -1687,7 +1687,7 @@ func (client *HTTPChatServiceClient) RemoveReaction(req *RemoveReactionRequest) 
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.RemoveReaction/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/RemoveReaction", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -1716,7 +1716,7 @@ func (client *HTTPChatServiceClient) GrantOwnership(req *GrantOwnershipRequest) 
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.GrantOwnership/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/GrantOwnership", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -1745,7 +1745,7 @@ func (client *HTTPChatServiceClient) GiveUpOwnership(req *GiveUpOwnershipRequest
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService.GiveUpOwnership/", reader)
+	hreq, err := http.NewRequest("POST", client.BaseURL+"/protocol.chat.v1.ChatService/GiveUpOwnership", reader)
 	if err != nil {
 		return nil, err
 	}
@@ -1781,7 +1781,7 @@ func (client *HTTPTestChatServiceClient) CreateGuild(req *CreateGuildRequest) (*
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.CreateGuild/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/CreateGuild", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -1803,7 +1803,7 @@ func (client *HTTPTestChatServiceClient) CreateRoom(req *CreateRoomRequest) (*Cr
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.CreateRoom/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/CreateRoom", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -1825,7 +1825,7 @@ func (client *HTTPTestChatServiceClient) CreateDirectMessage(req *CreateDirectMe
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.CreateDirectMessage/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/CreateDirectMessage", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -1847,7 +1847,7 @@ func (client *HTTPTestChatServiceClient) UpgradeRoomToGuild(req *UpgradeRoomToGu
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.UpgradeRoomToGuild/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/UpgradeRoomToGuild", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -1869,7 +1869,7 @@ func (client *HTTPTestChatServiceClient) CreateInvite(req *CreateInviteRequest) 
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.CreateInvite/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/CreateInvite", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -1891,7 +1891,7 @@ func (client *HTTPTestChatServiceClient) CreateChannel(req *CreateChannelRequest
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.CreateChannel/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/CreateChannel", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -1913,7 +1913,7 @@ func (client *HTTPTestChatServiceClient) GetGuildList(req *GetGuildListRequest) 
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.GetGuildList/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/GetGuildList", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -1935,7 +1935,7 @@ func (client *HTTPTestChatServiceClient) InviteUserToGuild(req *InviteUserToGuil
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.InviteUserToGuild/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/InviteUserToGuild", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -1957,7 +1957,7 @@ func (client *HTTPTestChatServiceClient) GetPendingInvites(req *GetPendingInvite
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.GetPendingInvites/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/GetPendingInvites", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -1979,7 +1979,7 @@ func (client *HTTPTestChatServiceClient) RejectPendingInvite(req *RejectPendingI
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.RejectPendingInvite/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/RejectPendingInvite", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -2001,7 +2001,7 @@ func (client *HTTPTestChatServiceClient) IgnorePendingInvite(req *IgnorePendingI
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.IgnorePendingInvite/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/IgnorePendingInvite", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -2023,7 +2023,7 @@ func (client *HTTPTestChatServiceClient) GetGuild(req *GetGuildRequest) (*GetGui
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.GetGuild/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/GetGuild", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -2045,7 +2045,7 @@ func (client *HTTPTestChatServiceClient) GetGuildInvites(req *GetGuildInvitesReq
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.GetGuildInvites/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/GetGuildInvites", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -2067,7 +2067,7 @@ func (client *HTTPTestChatServiceClient) GetGuildMembers(req *GetGuildMembersReq
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.GetGuildMembers/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/GetGuildMembers", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -2089,7 +2089,7 @@ func (client *HTTPTestChatServiceClient) GetGuildChannels(req *GetGuildChannelsR
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.GetGuildChannels/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/GetGuildChannels", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -2111,7 +2111,7 @@ func (client *HTTPTestChatServiceClient) GetChannelMessages(req *GetChannelMessa
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.GetChannelMessages/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/GetChannelMessages", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -2133,7 +2133,7 @@ func (client *HTTPTestChatServiceClient) GetMessage(req *GetMessageRequest) (*Ge
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.GetMessage/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/GetMessage", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -2155,7 +2155,7 @@ func (client *HTTPTestChatServiceClient) UpdateGuildInformation(req *UpdateGuild
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.UpdateGuildInformation/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/UpdateGuildInformation", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -2177,7 +2177,7 @@ func (client *HTTPTestChatServiceClient) UpdateChannelInformation(req *UpdateCha
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.UpdateChannelInformation/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/UpdateChannelInformation", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -2199,7 +2199,7 @@ func (client *HTTPTestChatServiceClient) UpdateChannelOrder(req *UpdateChannelOr
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.UpdateChannelOrder/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/UpdateChannelOrder", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -2221,7 +2221,7 @@ func (client *HTTPTestChatServiceClient) UpdateAllChannelOrder(req *UpdateAllCha
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.UpdateAllChannelOrder/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/UpdateAllChannelOrder", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -2243,7 +2243,7 @@ func (client *HTTPTestChatServiceClient) UpdateMessageText(req *UpdateMessageTex
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.UpdateMessageText/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/UpdateMessageText", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -2265,7 +2265,7 @@ func (client *HTTPTestChatServiceClient) DeleteGuild(req *DeleteGuildRequest) (*
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.DeleteGuild/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/DeleteGuild", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -2287,7 +2287,7 @@ func (client *HTTPTestChatServiceClient) DeleteInvite(req *DeleteInviteRequest) 
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.DeleteInvite/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/DeleteInvite", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -2309,7 +2309,7 @@ func (client *HTTPTestChatServiceClient) DeleteChannel(req *DeleteChannelRequest
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.DeleteChannel/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/DeleteChannel", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -2331,7 +2331,7 @@ func (client *HTTPTestChatServiceClient) DeleteMessage(req *DeleteMessageRequest
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.DeleteMessage/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/DeleteMessage", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -2353,7 +2353,7 @@ func (client *HTTPTestChatServiceClient) JoinGuild(req *JoinGuildRequest) (*Join
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.JoinGuild/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/JoinGuild", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -2375,7 +2375,7 @@ func (client *HTTPTestChatServiceClient) LeaveGuild(req *LeaveGuildRequest) (*Le
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.LeaveGuild/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/LeaveGuild", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -2397,7 +2397,7 @@ func (client *HTTPTestChatServiceClient) TriggerAction(req *TriggerActionRequest
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.TriggerAction/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/TriggerAction", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -2419,7 +2419,7 @@ func (client *HTTPTestChatServiceClient) SendMessage(req *SendMessageRequest) (*
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.SendMessage/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/SendMessage", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -2441,7 +2441,7 @@ func (client *HTTPTestChatServiceClient) QueryHasPermission(req *QueryHasPermiss
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.QueryHasPermission/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/QueryHasPermission", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -2463,7 +2463,7 @@ func (client *HTTPTestChatServiceClient) SetPermissions(req *SetPermissionsReque
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.SetPermissions/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/SetPermissions", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -2485,7 +2485,7 @@ func (client *HTTPTestChatServiceClient) GetPermissions(req *GetPermissionsReque
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.GetPermissions/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/GetPermissions", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -2507,7 +2507,7 @@ func (client *HTTPTestChatServiceClient) MoveRole(req *MoveRoleRequest) (*MoveRo
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.MoveRole/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/MoveRole", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -2529,7 +2529,7 @@ func (client *HTTPTestChatServiceClient) GetGuildRoles(req *GetGuildRolesRequest
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.GetGuildRoles/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/GetGuildRoles", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -2551,7 +2551,7 @@ func (client *HTTPTestChatServiceClient) AddGuildRole(req *AddGuildRoleRequest) 
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.AddGuildRole/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/AddGuildRole", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -2573,7 +2573,7 @@ func (client *HTTPTestChatServiceClient) ModifyGuildRole(req *ModifyGuildRoleReq
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.ModifyGuildRole/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/ModifyGuildRole", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -2595,7 +2595,7 @@ func (client *HTTPTestChatServiceClient) DeleteGuildRole(req *DeleteGuildRoleReq
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.DeleteGuildRole/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/DeleteGuildRole", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -2617,7 +2617,7 @@ func (client *HTTPTestChatServiceClient) ManageUserRoles(req *ManageUserRolesReq
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.ManageUserRoles/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/ManageUserRoles", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -2639,7 +2639,7 @@ func (client *HTTPTestChatServiceClient) GetUserRoles(req *GetUserRolesRequest) 
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.GetUserRoles/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/GetUserRoles", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -2661,7 +2661,7 @@ func (client *HTTPTestChatServiceClient) Typing(req *TypingRequest) (*TypingResp
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.Typing/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/Typing", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -2683,7 +2683,7 @@ func (client *HTTPTestChatServiceClient) PreviewGuild(req *PreviewGuildRequest) 
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.PreviewGuild/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/PreviewGuild", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -2705,7 +2705,7 @@ func (client *HTTPTestChatServiceClient) GetBannedUsers(req *GetBannedUsersReque
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.GetBannedUsers/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/GetBannedUsers", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -2727,7 +2727,7 @@ func (client *HTTPTestChatServiceClient) BanUser(req *BanUserRequest) (*BanUserR
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.BanUser/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/BanUser", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -2749,7 +2749,7 @@ func (client *HTTPTestChatServiceClient) KickUser(req *KickUserRequest) (*KickUs
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.KickUser/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/KickUser", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -2771,7 +2771,7 @@ func (client *HTTPTestChatServiceClient) UnbanUser(req *UnbanUserRequest) (*Unba
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.UnbanUser/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/UnbanUser", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -2793,7 +2793,7 @@ func (client *HTTPTestChatServiceClient) GetPinnedMessages(req *GetPinnedMessage
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.GetPinnedMessages/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/GetPinnedMessages", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -2815,7 +2815,7 @@ func (client *HTTPTestChatServiceClient) PinMessage(req *PinMessageRequest) (*Pi
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.PinMessage/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/PinMessage", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -2837,7 +2837,7 @@ func (client *HTTPTestChatServiceClient) UnpinMessage(req *UnpinMessageRequest) 
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.UnpinMessage/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/UnpinMessage", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -2862,7 +2862,7 @@ func (client *HTTPTestChatServiceClient) AddReaction(req *AddReactionRequest) (*
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.AddReaction/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/AddReaction", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -2884,7 +2884,7 @@ func (client *HTTPTestChatServiceClient) RemoveReaction(req *RemoveReactionReque
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.RemoveReaction/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/RemoveReaction", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -2906,7 +2906,7 @@ func (client *HTTPTestChatServiceClient) GrantOwnership(req *GrantOwnershipReque
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.GrantOwnership/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/GrantOwnership", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
@@ -2928,7 +2928,7 @@ func (client *HTTPTestChatServiceClient) GiveUpOwnership(req *GiveUpOwnershipReq
 		return nil, marshalErr
 	}
 	reader := bytes.NewReader(data)
-	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService.GiveUpOwnership/", reader)
+	testreq := httptest.NewRequest("POST", "/protocol.chat.v1.ChatService/GiveUpOwnership", reader)
 	resp, err := client.Client.Test(testreq)
 	if err != nil {
 		return nil, err
