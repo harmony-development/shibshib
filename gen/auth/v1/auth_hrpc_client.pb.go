@@ -57,7 +57,7 @@ func (client *HTTPAuthServiceClient) Federate(req *FederateRequest) (*FederateRe
 	for k, v := range client.Header {
 		hreq.Header[k] = v
 	}
-	hreq.Header.Add("content-typ", "application/hrpc")
+	hreq.Header.Add("content-type", "application/hrpc")
 	resp, err := client.Client.Do(hreq)
 	if err != nil {
 		return nil, err
@@ -86,7 +86,7 @@ func (client *HTTPAuthServiceClient) LoginFederated(req *LoginFederatedRequest) 
 	for k, v := range client.Header {
 		hreq.Header[k] = v
 	}
-	hreq.Header.Add("content-typ", "application/hrpc")
+	hreq.Header.Add("content-type", "application/hrpc")
 	resp, err := client.Client.Do(hreq)
 	if err != nil {
 		return nil, err
@@ -115,7 +115,7 @@ func (client *HTTPAuthServiceClient) Key(req *KeyRequest) (*KeyResponse, error) 
 	for k, v := range client.Header {
 		hreq.Header[k] = v
 	}
-	hreq.Header.Add("content-typ", "application/hrpc")
+	hreq.Header.Add("content-type", "application/hrpc")
 	resp, err := client.Client.Do(hreq)
 	if err != nil {
 		return nil, err
@@ -144,7 +144,7 @@ func (client *HTTPAuthServiceClient) BeginAuth(req *BeginAuthRequest) (*BeginAut
 	for k, v := range client.Header {
 		hreq.Header[k] = v
 	}
-	hreq.Header.Add("content-typ", "application/hrpc")
+	hreq.Header.Add("content-type", "application/hrpc")
 	resp, err := client.Client.Do(hreq)
 	if err != nil {
 		return nil, err
@@ -173,7 +173,7 @@ func (client *HTTPAuthServiceClient) NextStep(req *NextStepRequest) (*NextStepRe
 	for k, v := range client.Header {
 		hreq.Header[k] = v
 	}
-	hreq.Header.Add("content-typ", "application/hrpc")
+	hreq.Header.Add("content-type", "application/hrpc")
 	resp, err := client.Client.Do(hreq)
 	if err != nil {
 		return nil, err
@@ -202,7 +202,7 @@ func (client *HTTPAuthServiceClient) StepBack(req *StepBackRequest) (*StepBackRe
 	for k, v := range client.Header {
 		hreq.Header[k] = v
 	}
-	hreq.Header.Add("content-typ", "application/hrpc")
+	hreq.Header.Add("content-type", "application/hrpc")
 	resp, err := client.Client.Do(hreq)
 	if err != nil {
 		return nil, err
@@ -234,7 +234,7 @@ func (client *HTTPAuthServiceClient) CheckLoggedIn(req *CheckLoggedInRequest) (*
 	for k, v := range client.Header {
 		hreq.Header[k] = v
 	}
-	hreq.Header.Add("content-typ", "application/hrpc")
+	hreq.Header.Add("content-type", "application/hrpc")
 	resp, err := client.Client.Do(hreq)
 	if err != nil {
 		return nil, err

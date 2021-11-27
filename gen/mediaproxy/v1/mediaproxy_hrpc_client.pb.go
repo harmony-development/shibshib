@@ -41,7 +41,7 @@ func (client *HTTPMediaProxyServiceClient) FetchLinkMetadata(req *FetchLinkMetad
 	for k, v := range client.Header {
 		hreq.Header[k] = v
 	}
-	hreq.Header.Add("content-typ", "application/hrpc")
+	hreq.Header.Add("content-type", "application/hrpc")
 	resp, err := client.Client.Do(hreq)
 	if err != nil {
 		return nil, err
@@ -70,7 +70,7 @@ func (client *HTTPMediaProxyServiceClient) InstantView(req *InstantViewRequest) 
 	for k, v := range client.Header {
 		hreq.Header[k] = v
 	}
-	hreq.Header.Add("content-typ", "application/hrpc")
+	hreq.Header.Add("content-type", "application/hrpc")
 	resp, err := client.Client.Do(hreq)
 	if err != nil {
 		return nil, err
@@ -99,7 +99,7 @@ func (client *HTTPMediaProxyServiceClient) CanInstantView(req *CanInstantViewReq
 	for k, v := range client.Header {
 		hreq.Header[k] = v
 	}
-	hreq.Header.Add("content-typ", "application/hrpc")
+	hreq.Header.Add("content-type", "application/hrpc")
 	resp, err := client.Client.Do(hreq)
 	if err != nil {
 		return nil, err

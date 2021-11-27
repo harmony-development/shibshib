@@ -51,7 +51,7 @@ func (client *HTTPEmoteServiceClient) CreateEmotePack(req *CreateEmotePackReques
 	for k, v := range client.Header {
 		hreq.Header[k] = v
 	}
-	hreq.Header.Add("content-typ", "application/hrpc")
+	hreq.Header.Add("content-type", "application/hrpc")
 	resp, err := client.Client.Do(hreq)
 	if err != nil {
 		return nil, err
@@ -80,7 +80,7 @@ func (client *HTTPEmoteServiceClient) GetEmotePacks(req *GetEmotePacksRequest) (
 	for k, v := range client.Header {
 		hreq.Header[k] = v
 	}
-	hreq.Header.Add("content-typ", "application/hrpc")
+	hreq.Header.Add("content-type", "application/hrpc")
 	resp, err := client.Client.Do(hreq)
 	if err != nil {
 		return nil, err
@@ -109,7 +109,7 @@ func (client *HTTPEmoteServiceClient) GetEmotePackEmotes(req *GetEmotePackEmotes
 	for k, v := range client.Header {
 		hreq.Header[k] = v
 	}
-	hreq.Header.Add("content-typ", "application/hrpc")
+	hreq.Header.Add("content-type", "application/hrpc")
 	resp, err := client.Client.Do(hreq)
 	if err != nil {
 		return nil, err
@@ -138,7 +138,7 @@ func (client *HTTPEmoteServiceClient) AddEmoteToPack(req *AddEmoteToPackRequest)
 	for k, v := range client.Header {
 		hreq.Header[k] = v
 	}
-	hreq.Header.Add("content-typ", "application/hrpc")
+	hreq.Header.Add("content-type", "application/hrpc")
 	resp, err := client.Client.Do(hreq)
 	if err != nil {
 		return nil, err
@@ -167,7 +167,7 @@ func (client *HTTPEmoteServiceClient) DeleteEmotePack(req *DeleteEmotePackReques
 	for k, v := range client.Header {
 		hreq.Header[k] = v
 	}
-	hreq.Header.Add("content-typ", "application/hrpc")
+	hreq.Header.Add("content-type", "application/hrpc")
 	resp, err := client.Client.Do(hreq)
 	if err != nil {
 		return nil, err
@@ -196,7 +196,7 @@ func (client *HTTPEmoteServiceClient) DeleteEmoteFromPack(req *DeleteEmoteFromPa
 	for k, v := range client.Header {
 		hreq.Header[k] = v
 	}
-	hreq.Header.Add("content-typ", "application/hrpc")
+	hreq.Header.Add("content-type", "application/hrpc")
 	resp, err := client.Client.Do(hreq)
 	if err != nil {
 		return nil, err
@@ -225,7 +225,7 @@ func (client *HTTPEmoteServiceClient) DequipEmotePack(req *DequipEmotePackReques
 	for k, v := range client.Header {
 		hreq.Header[k] = v
 	}
-	hreq.Header.Add("content-typ", "application/hrpc")
+	hreq.Header.Add("content-type", "application/hrpc")
 	resp, err := client.Client.Do(hreq)
 	if err != nil {
 		return nil, err
@@ -254,7 +254,7 @@ func (client *HTTPEmoteServiceClient) EquipEmotePack(req *EquipEmotePackRequest)
 	for k, v := range client.Header {
 		hreq.Header[k] = v
 	}
-	hreq.Header.Add("content-typ", "application/hrpc")
+	hreq.Header.Add("content-type", "application/hrpc")
 	resp, err := client.Client.Do(hreq)
 	if err != nil {
 		return nil, err

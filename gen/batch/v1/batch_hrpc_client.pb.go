@@ -44,7 +44,7 @@ func (client *HTTPBatchServiceClient) Batch(req *BatchRequest) (*BatchResponse, 
 	for k, v := range client.Header {
 		hreq.Header[k] = v
 	}
-	hreq.Header.Add("content-typ", "application/hrpc")
+	hreq.Header.Add("content-type", "application/hrpc")
 	resp, err := client.Client.Do(hreq)
 	if err != nil {
 		return nil, err
@@ -73,7 +73,7 @@ func (client *HTTPBatchServiceClient) BatchSame(req *BatchSameRequest) (*BatchSa
 	for k, v := range client.Header {
 		hreq.Header[k] = v
 	}
-	hreq.Header.Add("content-typ", "application/hrpc")
+	hreq.Header.Add("content-type", "application/hrpc")
 	resp, err := client.Client.Do(hreq)
 	if err != nil {
 		return nil, err

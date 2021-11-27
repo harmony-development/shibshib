@@ -42,7 +42,7 @@ func (client *HTTPPostboxServiceClient) Pull(req *PullRequest) (*PullResponse, e
 	for k, v := range client.Header {
 		hreq.Header[k] = v
 	}
-	hreq.Header.Add("content-typ", "application/hrpc")
+	hreq.Header.Add("content-type", "application/hrpc")
 	resp, err := client.Client.Do(hreq)
 	if err != nil {
 		return nil, err
@@ -71,7 +71,7 @@ func (client *HTTPPostboxServiceClient) Push(req *PushRequest) (*PushResponse, e
 	for k, v := range client.Header {
 		hreq.Header[k] = v
 	}
-	hreq.Header.Add("content-typ", "application/hrpc")
+	hreq.Header.Add("content-type", "application/hrpc")
 	resp, err := client.Client.Do(hreq)
 	if err != nil {
 		return nil, err
@@ -100,7 +100,7 @@ func (client *HTTPPostboxServiceClient) NotifyNewId(req *NotifyNewIdRequest) (*N
 	for k, v := range client.Header {
 		hreq.Header[k] = v
 	}
-	hreq.Header.Add("content-typ", "application/hrpc")
+	hreq.Header.Add("content-type", "application/hrpc")
 	resp, err := client.Client.Do(hreq)
 	if err != nil {
 		return nil, err
