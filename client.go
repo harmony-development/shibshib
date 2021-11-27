@@ -165,7 +165,7 @@ func (c *Client) SendMessage(msg *chatv1.SendMessageRequest) (*chatv1.SendMessag
 
 func (c *Client) TransformHMCURL(hmc string) string {
 	if !strings.HasPrefix(hmc, "hmc://") {
-		return fmt.Sprintf("https://%s/_harmony/media/download/%s", c.homeserver, hmc)
+		return fmt.Sprintf("%s/_harmony/media/download/%s", c.homeserver, hmc)
 	}
 
 	trimmed := strings.TrimPrefix(hmc, "hmc://")
